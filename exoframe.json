@@ -1,0 +1,6 @@
+{
+  "name": "status-page-nodejs",
+  "restart": "on-failure:2",
+  "domain": "status-backend.r3ktm8.de",
+  "project": "status-page-backend"
+}

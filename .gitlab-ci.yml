@@ -1,0 +1,24 @@
+variables:
+  NODE_ENV: production
+  PKG_CACHE_PATH: .cache/
+
+cache:
+  paths:
+    - node_modules/
+    - .cache/
+
+stages:
+  - package
+
+image: node:latest
+
+pkg:
+  image: virtuellewolke/node-pkg:latest
+  script:
+    - pkg .
+  artifacts:
+    paths:
+      - status-page-linux
+      - status-page-macos
+      - status-page-win.exe
+    expire_in: 30 days

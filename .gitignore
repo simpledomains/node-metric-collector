@@ -1,0 +1,17 @@
+### IntelliJ
+.idea/
+*.iml
+
+### NodeJS
+node_modules/
+package-lock.json
+
+### Project
+.env.dev
+.env.production
+.env.local
+
+### PKG
+status-page-win.exe
+status-page-linux
+status-page-macos
