@@ -13,6 +13,7 @@ stages:
 image: node:latest
 
 pkg:
+  stage: package
   image: virtuellewolke/node-pkg:latest
   script:
     - pkg .
