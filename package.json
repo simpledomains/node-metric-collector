@@ -23,12 +23,17 @@
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
     "mysql-promise": "^5.0.0",
+    "pg": "^7.12.0",
+    "pg-promise": "^9.0.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "require-dir": "^1.2.0"
   },
   "bin": "src/app.js",
   "pkg": {
-    "scripts": "src/metric/*.js"
+    "scripts": [
+      "src/metric/*.js",
+      "src/utils/persistence/*.js"
+    ]
   }
 }

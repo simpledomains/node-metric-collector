@@ -6,6 +6,12 @@ const log         = require('./utils/logging');
 const moment      = require('moment');
 const CronJob     = require('cron').CronJob;
 
+// modification to string prototype
+String.prototype.replaceAll = function (search, replacement) {
+    let target = this;
+    return target.split(search).join(replacement);
+};
+
 class Processor {
     initialize() {
         persistence.init();
@@ -46,14 +52,14 @@ class Processor {
             metric = {metric: null, status: null, error: 'CONFIGURATION'}
         }
 
-        if (this.determineNewStatus(metric) !== 'OPERATIONAL' && cTry < 3) {
+        if (Processor.determineNewStatus(metric) !== 'OPERATIONAL' && cTry < 3) {
             metric = await this.retrieveMetric(resolvers, item, cTry + 1);
         }
 
         return metric;
     }
 
-    determineNewStatus(metric) {
+    static determineNewStatus(metric) {
         if (metric.error === 'MAINTENANCE' || metric.error === 'DEGRADED_PERFORMANCE') {
             return metric.error;
         }
@@ -75,7 +81,7 @@ class Processor {
 
                 let metric = await this.retrieveMetric(resolvers, item, 1);
 
-                await persistence.updateServiceStatus(item, this.determineNewStatus(metric));
+                await persistence.updateServiceStatus(item, Processor.determineNewStatus(metric));
 
                 await persistence.persistMetric(item, metric.metric, metric.status, metric.error);
             }

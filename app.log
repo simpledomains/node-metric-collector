@@ -15925,3 +15925,1168 @@
 2019/7/29 19:39:30 DEBUG DB >> QUERY >> INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(5, 100, 200, NULL)
 2019/7/29 19:39:30 DEBUG DB >> QUERY >> INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(7, 100, 200, NULL)
 2019/7/29 19:39:38 ERROR Stopping application
+2.8.2019 17:04:53 INFO  Starting Application ...
+2.8.2019 17:04:53 INFO  Using Database undefined
+2.8.2019 17:04:53 INFO  Found metric resolver 'http'.
+2.8.2019 17:04:53 INFO  Found metric resolver 'port'.
+2.8.2019 17:04:53 INFO  Calculating availability ...
+2.8.2019 17:04:53 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:04:53 INFO  Startup successful
+2.8.2019 17:04:53 ERROR A error occurred while processing metrics ... Error: connect ECONNREFUSED 127.0.0.1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1056:14)
+    --------------------
+    at Protocol._enqueue (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql/lib/protocol/Protocol.js:144:48)
+    at Protocol.handshake (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql/lib/protocol/Protocol.js:51:23)
+    at PoolConnection.connect (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql/lib/Connection.js:119:18)
+    at Pool.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql/lib/Pool.js:48:16)
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:99:22)
+    at Object.getServices (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:32:31)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:72:49)
+    at CronJob.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:20:18)
+    at CronJob.fireOnTick (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:562:23)
+    at new CronJob (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:534:15) {
+  errno: 'ECONNREFUSED',
+  code: 'ECONNREFUSED',
+  syscall: 'connect',
+  address: '127.0.0.1',
+  port: 3306,
+  fatal: true
+}
+2.8.2019 17:04:53 ERROR Something went wrong while processing availability loop due to: Error: connect ECONNREFUSED 127.0.0.1:3306
+2.8.2019 17:04:54 ERROR Stopping application
+2.8.2019 17:06:29 INFO  Starting Application ...
+2.8.2019 17:06:29 INFO  Using database driver 'mariadb'.
+2.8.2019 17:06:39 INFO  Starting Application ...
+2.8.2019 17:06:39 INFO  Using database driver 'pgsql'.
+2.8.2019 17:06:39 INFO  Found metric resolver 'http'.
+2.8.2019 17:06:39 INFO  Found metric resolver 'port'.
+2.8.2019 17:06:39 INFO  Calculating availability ...
+2.8.2019 17:06:39 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:06:39 INFO  Startup successful
+2.8.2019 17:06:39 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:96:22)
+    at Object.getServices (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:29:31)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:72:49)
+    at CronJob.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:20:18)
+    at CronJob.fireOnTick (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:562:23)
+    at new CronJob (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:534:15)
+    at Processor.initialize (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:19:26)
+    at Object.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/app.js:11:11)
+    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
+2.8.2019 17:06:39 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'getConnection' of null
+2.8.2019 17:06:40 ERROR Stopping application
+2.8.2019 17:08:26 INFO  Starting Application ...
+2.8.2019 17:08:26 INFO  Using database driver 'pgsql'.
+2.8.2019 17:08:26 INFO  Found metric resolver 'http'.
+2.8.2019 17:08:26 INFO  Found metric resolver 'port'.
+2.8.2019 17:08:26 INFO  Calculating availability ...
+2.8.2019 17:08:26 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:08:26 INFO  Startup successful
+2.8.2019 17:08:26 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:96:22)
+    at Object.getServices (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:29:31)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:72:49)
+    at CronJob.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:20:18)
+    at CronJob.fireOnTick (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:562:23)
+    at new CronJob (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:534:15)
+    at Processor.initialize (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:19:26)
+    at Object.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/app.js:11:11)
+    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
+2.8.2019 17:08:26 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'getConnection' of null
+2.8.2019 17:08:27 ERROR Stopping application
+2.8.2019 17:12:57 INFO  Starting Application ...
+2.8.2019 17:12:57 INFO  Using database driver 'pgsql'.
+2.8.2019 17:12:57 INFO  Found metric resolver 'http'.
+2.8.2019 17:12:57 INFO  Found metric resolver 'port'.
+2.8.2019 17:12:57 INFO  Calculating availability ...
+2.8.2019 17:12:57 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:12:57 INFO  Startup successful
+2.8.2019 17:12:57 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getServices' of undefined
+    at Object.getServices (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:29:39)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:78:49)
+    at CronJob.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:26:18)
+    at CronJob.fireOnTick (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:562:23)
+    at new CronJob (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/cron/lib/cron.js:534:15)
+    at Processor.initialize (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:25:26)
+    at Object.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/app.js:11:11)
+    at Module._compile (internal/modules/cjs/loader.js:777:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:788:10)
+    at Module.load (internal/modules/cjs/loader.js:643:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:556:12)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:840:10)
+    at internal/main/run_main_module.js:17:11
+2.8.2019 17:12:57 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'getServices' of undefined
+2.8.2019 17:12:58 ERROR Stopping application
+2.8.2019 17:13:25 INFO  Starting Application ...
+2.8.2019 17:13:25 INFO  Using database driver 'pgsql'.
+2.8.2019 17:13:25 INFO  Found metric resolver 'http'.
+2.8.2019 17:13:25 INFO  Found metric resolver 'port'.
+2.8.2019 17:13:25 INFO  Calculating availability ...
+2.8.2019 17:13:25 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:13:25 INFO  Startup successful
+2.8.2019 17:13:25 ERROR A error occurred while processing metrics ... Error: Connection terminated unexpectedly
+    at Connection.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/client.js:252:9)
+    at Object.onceWrapper (events.js:291:20)
+    at Connection.emit (events.js:203:13)
+    at Socket.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:77:10)
+    at Socket.emit (events.js:203:13)
+    at TCP.<anonymous> (net.js:588:12)
+2.8.2019 17:13:25 ERROR Something went wrong while processing availability loop due to: Error: Connection terminated unexpectedly
+2.8.2019 17:13:26 ERROR Stopping application
+2.8.2019 17:15:48 INFO  Starting Application ...
+2.8.2019 17:15:48 INFO  Using database driver 'pgsql'.
+2.8.2019 17:15:48 INFO  Found metric resolver 'http'.
+2.8.2019 17:15:48 INFO  Found metric resolver 'port'.
+2.8.2019 17:15:48 INFO  Calculating availability ...
+2.8.2019 17:15:48 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:15:48 INFO  Startup successful
+2.8.2019 17:15:48 ERROR A error occurred while processing metrics ... error: relation "metrics.services" does not exist
+    at Connection.parseE (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:604:11)
+    at Connection.parseMessage (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:401:19)
+    at Socket.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:121:22)
+    at Socket.emit (events.js:203:13)
+    at addChunk (_stream_readable.js:294:12)
+    at readableAddChunk (_stream_readable.js:275:11)
+    at Socket.Readable.push (_stream_readable.js:210:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:166:17) {
+  name: 'error',
+  length: 115,
+  severity: 'ERROR',
+  code: '42P01',
+  detail: undefined,
+  hint: undefined,
+  position: '15',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_relation.c',
+  line: '1159',
+  routine: 'parserOpenTable'
+}
+2.8.2019 17:15:48 ERROR Something went wrong while processing availability loop due to: error: relation "metrics.services" does not exist
+2.8.2019 17:15:50 ERROR Stopping application
+2.8.2019 17:21:16 INFO  Starting Application ...
+2.8.2019 17:21:16 INFO  Using database driver 'pgsql'.
+2.8.2019 17:21:16 INFO  Found metric resolver 'http'.
+2.8.2019 17:21:16 INFO  Found metric resolver 'port'.
+2.8.2019 17:21:16 INFO  Calculating availability ...
+2.8.2019 17:21:16 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:21:16 INFO  Startup successful
+2.8.2019 17:21:16 ERROR A error occurred while processing metrics ... TypeError: serviceList is not iterable
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:80:32)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:21:16 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'forEach' of undefined
+2.8.2019 17:21:17 ERROR Stopping application
+2.8.2019 17:21:37 INFO  Starting Application ...
+2.8.2019 17:21:37 INFO  Using database driver 'pgsql'.
+2.8.2019 17:21:37 INFO  Found metric resolver 'http'.
+2.8.2019 17:21:37 INFO  Found metric resolver 'port'.
+2.8.2019 17:21:37 INFO  Calculating availability ...
+2.8.2019 17:21:38 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:21:38 INFO  Startup successful
+2.8.2019 17:21:38 ERROR A error occurred while processing metrics ... TypeError: serviceList is not iterable
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:80:32)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:21:38 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'forEach' of undefined
+2.8.2019 17:21:39 ERROR Stopping application
+2.8.2019 17:22:31 INFO  Starting Application ...
+2.8.2019 17:22:31 INFO  Using database driver 'pgsql'.
+2.8.2019 17:22:31 INFO  Found metric resolver 'http'.
+2.8.2019 17:22:31 INFO  Found metric resolver 'port'.
+2.8.2019 17:22:31 INFO  Calculating availability ...
+2.8.2019 17:22:31 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:22:31 INFO  Startup successful
+2.8.2019 17:22:31 ERROR A error occurred while processing metrics ... TypeError: serviceList is not iterable
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:80:32)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:22:31 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'forEach' of undefined
+2.8.2019 17:22:32 ERROR Stopping application
+2.8.2019 17:22:44 INFO  Starting Application ...
+2.8.2019 17:22:44 INFO  Using database driver 'pgsql'.
+2.8.2019 17:22:44 INFO  Found metric resolver 'http'.
+2.8.2019 17:22:44 INFO  Found metric resolver 'port'.
+2.8.2019 17:22:44 INFO  Calculating availability ...
+2.8.2019 17:22:45 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:22:45 INFO  Startup successful
+2.8.2019 17:22:45 INFO  undefined
+2.8.2019 17:22:45 ERROR A error occurred while processing metrics ... TypeError: serviceList is not iterable
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:82:32)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:22:45 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'forEach' of undefined
+2.8.2019 17:22:45 ERROR Stopping application
+2.8.2019 17:23:08 INFO  Starting Application ...
+2.8.2019 17:23:08 INFO  Using database driver 'pgsql'.
+2.8.2019 17:23:08 INFO  Found metric resolver 'http'.
+2.8.2019 17:23:08 INFO  Found metric resolver 'port'.
+2.8.2019 17:23:08 INFO  Calculating availability ...
+2.8.2019 17:23:08 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:23:08 INFO  Startup successful
+2.8.2019 17:23:08 INFO  undefined
+2.8.2019 17:23:08 ERROR A error occurred while processing metrics ... TypeError: serviceList is not iterable
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:82:32)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:23:08 ERROR Something went wrong while processing availability loop due to: TypeError: Cannot read property 'forEach' of undefined
+2.8.2019 17:23:09 ERROR Stopping application
+2.8.2019 17:23:29 INFO  Starting Application ...
+2.8.2019 17:23:29 INFO  Using database driver 'pgsql'.
+2.8.2019 17:23:29 INFO  Found metric resolver 'http'.
+2.8.2019 17:23:29 INFO  Found metric resolver 'port'.
+2.8.2019 17:23:29 INFO  Calculating availability ...
+2.8.2019 17:23:29 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:23:29 INFO  Startup successful
+2.8.2019 17:23:29 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:23:29 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:23:29 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:23:29 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:96:22)
+    at Object.updateServiceStatus (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:43:24)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:86:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:23:30 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:23:30 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:96:22)
+    at Object.persistMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:48:21)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:88:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:23:30 ERROR Stopping application
+2.8.2019 17:24:12 INFO  Starting Application ...
+2.8.2019 17:24:12 INFO  Using database driver 'pgsql'.
+2.8.2019 17:24:12 INFO  Found metric resolver 'http'.
+2.8.2019 17:24:12 INFO  Found metric resolver 'port'.
+2.8.2019 17:24:12 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:24:12 INFO  Calculating availability ...
+2.8.2019 17:24:12 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:24:13 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:24:13 INFO  Startup successful
+2.8.2019 17:24:13 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:24:13 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:24:13 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:24:13 ERROR Stopping application
+2.8.2019 17:25:29 INFO  Starting Application ...
+2.8.2019 17:25:29 INFO  Using database driver 'pgsql'.
+2.8.2019 17:25:29 INFO  Found metric resolver 'http'.
+2.8.2019 17:25:29 INFO  Found metric resolver 'port'.
+2.8.2019 17:25:29 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:25:29 INFO  Calculating availability ...
+2.8.2019 17:25:29 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:25:29 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:25:29 INFO  Startup successful
+2.8.2019 17:25:29 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:25:29 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:25:29 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:25:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:25:30 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:25:30 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:25:30 DEBUG DB >> QUERY >> UPDATE services SET status = 'DEGRADED_PERFORMANCE' WHERE id = 1
+2.8.2019 17:25:30 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:94:22)
+    at Object.updateServiceStatus (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:41:24)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:86:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:25:30 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:25:30 DEBUG DB >> QUERY >> UPDATE services SET status = 'DEGRADED_PERFORMANCE' WHERE id = 1
+2.8.2019 17:25:30 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:94:22)
+    at Object.updateServiceStatus (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:41:24)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:86:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:25:30 ERROR Stopping application
+2.8.2019 17:25:50 INFO  Starting Application ...
+2.8.2019 17:25:50 INFO  Using database driver 'pgsql'.
+2.8.2019 17:25:50 INFO  Found metric resolver 'http'.
+2.8.2019 17:25:50 INFO  Found metric resolver 'port'.
+2.8.2019 17:25:50 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:25:50 INFO  Calculating availability ...
+2.8.2019 17:25:50 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:25:50 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:25:50 INFO  Startup successful
+2.8.2019 17:25:50 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:25:50 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:25:50 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:25:50 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:25:50 DEBUG DB >> QUERY >> UPDATE services SET status = 'DEGRADED_PERFORMANCE' WHERE id = 1
+2.8.2019 17:25:50 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:92:22)
+    at Object.updateServiceStatus (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:39:24)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:86:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:25:51 ERROR Stopping application
+2.8.2019 17:27:19 INFO  Starting Application ...
+2.8.2019 17:27:19 INFO  Using database driver 'pgsql'.
+2.8.2019 17:27:19 INFO  Found metric resolver 'http'.
+2.8.2019 17:27:19 INFO  Found metric resolver 'port'.
+2.8.2019 17:27:19 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:27:19 INFO  Calculating availability ...
+2.8.2019 17:27:19 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:27:19 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:27:19 INFO  Startup successful
+2.8.2019 17:27:19 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:27:19 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:27:19 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:27:20 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:27:20 DEBUG DB::PGSQL => UPDATE metricdb.services SET status = ? WHERE id = ?
+2.8.2019 17:27:20 ERROR A error occurred while processing metrics ... TypeError: this.doQuery is not a function
+    at Object.updateServiceStatus (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence/pgsql.js:36:27)
+    at Object.updateServiceStatus (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:39:32)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:86:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:27:20 ERROR Stopping application
+2.8.2019 17:27:31 INFO  Starting Application ...
+2.8.2019 17:27:31 INFO  Using database driver 'pgsql'.
+2.8.2019 17:27:31 INFO  Found metric resolver 'http'.
+2.8.2019 17:27:31 INFO  Found metric resolver 'port'.
+2.8.2019 17:27:31 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:27:31 INFO  Calculating availability ...
+2.8.2019 17:27:31 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:27:32 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:27:32 INFO  Startup successful
+2.8.2019 17:27:32 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:27:32 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:27:32 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:27:32 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:27:32 DEBUG DB::PGSQL => UPDATE metricdb.services SET status = ? WHERE id = ?
+2.8.2019 17:27:32 ERROR A error occurred while processing metrics ... error: syntax error at or near "WHERE"
+    at Connection.parseE (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:604:11)
+    at Connection.parseMessage (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:401:19)
+    at Socket.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:121:22)
+    at Socket.emit (events.js:203:13)
+    at addChunk (_stream_readable.js:294:12)
+    at readableAddChunk (_stream_readable.js:275:11)
+    at Socket.Readable.push (_stream_readable.js:210:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:166:17) {
+  name: 'error',
+  length: 94,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '41',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
+2.8.2019 17:27:32 ERROR Stopping application
+2.8.2019 17:29:58 INFO  Starting Application ...
+2.8.2019 17:29:58 INFO  Using database driver 'pgsql'.
+2.8.2019 17:29:58 INFO  Found metric resolver 'http'.
+2.8.2019 17:29:58 INFO  Found metric resolver 'port'.
+2.8.2019 17:29:58 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:29:58 INFO  Calculating availability ...
+2.8.2019 17:29:58 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:29:58 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:29:58 INFO  Startup successful
+2.8.2019 17:29:58 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:29:58 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:29:58 INFO  (Availability) Check runs next at 2019-08-02T15:30:00Z
+2.8.2019 17:29:59 INFO  (ServiceStatus) Setting status of Test Service to DEGRADED_PERFORMANCE
+2.8.2019 17:29:59 DEBUG DB::PGSQL => UPDATE metricdb.services SET status = $1 WHERE id = $2
+2.8.2019 17:29:59 DEBUG DB >> QUERY >> INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(1, 109, 200, 'DEGRADED_PERFORMANCE')
+2.8.2019 17:29:59 ERROR A error occurred while processing metrics ... TypeError: Cannot read property 'getConnection' of null
+    at /Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:51:13
+    at Promise._execute (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/debuggability.js:313:9)
+    at Promise._resolveFromExecutor (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:488:18)
+    at new Promise (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/bluebird/js/release/promise.js:79:10)
+    at DB.getConnection (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:50:9)
+    at DB.query (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/mysql-promise/index.js:75:4)
+    at Object.doQuery (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:92:22)
+    at Object.persistMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/utils/persistence.js:44:21)
+    at Processor.processMetric (/Users/mtries/Projekte/Privat/metric-collector-nodejs/src/processor.js:88:35)
+    at processTicksAndRejections (internal/process/task_queues.js:85:5)
+2.8.2019 17:29:59 ERROR Stopping application
+2.8.2019 17:32:18 INFO  Starting Application ...
+2.8.2019 17:32:18 INFO  Using database driver 'pgsql'.
+2.8.2019 17:32:19 INFO  Found metric resolver 'http'.
+2.8.2019 17:32:19 INFO  Found metric resolver 'port'.
+2.8.2019 17:32:19 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:32:19 INFO  Calculating availability ...
+2.8.2019 17:32:19 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:32:19 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:32:19 INFO  Startup successful
+2.8.2019 17:32:19 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:32:19 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:32:19 INFO  (Availability) Check runs next at 2019-08-02T15:40:00Z
+2.8.2019 17:32:19 DEBUG DB::PGSQL => INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(?, ?, ?, ?)
+2.8.2019 17:32:19 ERROR A error occurred while processing metrics ... error: syntax error at or near ","
+    at Connection.parseE (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:604:11)
+    at Connection.parseMessage (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:401:19)
+    at Socket.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:121:22)
+    at Socket.emit (events.js:203:13)
+    at addChunk (_stream_readable.js:294:12)
+    at readableAddChunk (_stream_readable.js:275:11)
+    at Socket.Readable.push (_stream_readable.js:210:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:166:17) {
+  name: 'error',
+  length: 90,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '88',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
+2.8.2019 17:32:20 ERROR Stopping application
+2.8.2019 17:32:36 INFO  Starting Application ...
+2.8.2019 17:32:36 INFO  Using database driver 'pgsql'.
+2.8.2019 17:32:36 INFO  Found metric resolver 'http'.
+2.8.2019 17:32:36 INFO  Found metric resolver 'port'.
+2.8.2019 17:32:36 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:32:36 INFO  Calculating availability ...
+2.8.2019 17:32:36 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:32:37 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:32:37 INFO  Startup successful
+2.8.2019 17:32:37 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:32:37 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:32:37 INFO  (Availability) Check runs next at 2019-08-02T15:40:00Z
+2.8.2019 17:32:37 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES(?, ?, ?, ?)
+2.8.2019 17:32:37 ERROR A error occurred while processing metrics ... error: syntax error at or near ","
+    at Connection.parseE (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:604:11)
+    at Connection.parseMessage (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:401:19)
+    at Socket.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:121:22)
+    at Socket.emit (events.js:203:13)
+    at addChunk (_stream_readable.js:294:12)
+    at readableAddChunk (_stream_readable.js:275:11)
+    at Socket.Readable.push (_stream_readable.js:210:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:166:17) {
+  name: 'error',
+  length: 90,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '97',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
+2.8.2019 17:32:37 ERROR Stopping application
+2.8.2019 17:34:17 INFO  Starting Application ...
+2.8.2019 17:34:17 INFO  Using database driver 'pgsql'.
+2.8.2019 17:34:17 INFO  Found metric resolver 'http'.
+2.8.2019 17:34:17 INFO  Found metric resolver 'port'.
+2.8.2019 17:34:17 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:34:17 INFO  Calculating availability ...
+2.8.2019 17:34:17 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:34:17 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:34:17 INFO  Startup successful
+2.8.2019 17:34:18 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:34:18 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:34:18 INFO  (Availability) Check runs next at 2019-08-02T15:40:00Z
+2.8.2019 17:34:18 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES(?, ?, ?, ?)
+2.8.2019 17:34:18 ERROR A error occurred while processing metrics ... error: syntax error at or near ","
+    at Connection.parseE (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:604:11)
+    at Connection.parseMessage (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:401:19)
+    at Socket.<anonymous> (/Users/mtries/Projekte/Privat/metric-collector-nodejs/node_modules/pg/lib/connection.js:121:22)
+    at Socket.emit (events.js:203:13)
+    at addChunk (_stream_readable.js:294:12)
+    at readableAddChunk (_stream_readable.js:275:11)
+    at Socket.Readable.push (_stream_readable.js:210:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:166:17) {
+  name: 'error',
+  length: 90,
+  severity: 'ERROR',
+  code: '42601',
+  detail: undefined,
+  hint: undefined,
+  position: '97',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'scan.l',
+  line: '1134',
+  routine: 'scanner_yyerror'
+}
+2.8.2019 17:34:18 ERROR Stopping application
+2.8.2019 17:34:33 INFO  Starting Application ...
+2.8.2019 17:34:33 INFO  Using database driver 'pgsql'.
+2.8.2019 17:34:33 INFO  Found metric resolver 'http'.
+2.8.2019 17:34:33 INFO  Found metric resolver 'port'.
+2.8.2019 17:34:33 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:34:33 INFO  Calculating availability ...
+2.8.2019 17:34:33 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:34:33 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:34:33 INFO  Startup successful
+2.8.2019 17:34:33 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:34:33 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:34:33 INFO  (Availability) Check runs next at 2019-08-02T15:40:00Z
+2.8.2019 17:34:34 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:34:51 ERROR Stopping application
+2.8.2019 17:40:54 INFO  Starting Application ...
+2.8.2019 17:40:54 INFO  Using database driver 'pgsql'.
+2.8.2019 17:40:54 INFO  Found metric resolver 'http'.
+2.8.2019 17:40:54 INFO  Found metric resolver 'port'.
+2.8.2019 17:40:54 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:40:54 INFO  Calculating availability ...
+2.8.2019 17:40:54 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:40:54 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:40:54 INFO  Startup successful
+2.8.2019 17:40:54 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:40:54 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:40:54 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:40:54 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:40:55 ERROR Stopping application
+2.8.2019 17:41:08 INFO  Starting Application ...
+2.8.2019 17:41:08 INFO  Using database driver 'pgsql'.
+2.8.2019 17:41:08 INFO  Found metric resolver 'http'.
+2.8.2019 17:41:08 INFO  Found metric resolver 'port'.
+2.8.2019 17:41:09 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:41:09 INFO  Calculating availability ...
+2.8.2019 17:41:09 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:41:09 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:41:09 INFO  Startup successful
+2.8.2019 17:41:09 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:41:09 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:41:09 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:41:09 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:41:11 ERROR Stopping application
+2.8.2019 17:44:49 INFO  Starting Application ...
+2.8.2019 17:44:49 INFO  Using database driver 'pgsql'.
+2.8.2019 17:44:49 INFO  Found metric resolver 'http'.
+2.8.2019 17:44:49 INFO  Found metric resolver 'port'.
+2.8.2019 17:44:49 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:44:49 INFO  Calculating availability ...
+2.8.2019 17:44:49 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:44:49 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:44:49 INFO  Startup successful
+2.8.2019 17:44:49 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:44:49 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:44:49 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:44:49 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:44:51 ERROR Stopping application
+2.8.2019 17:45:11 INFO  Starting Application ...
+2.8.2019 17:45:11 INFO  Using database driver 'pgsql'.
+2.8.2019 17:45:11 INFO  Found metric resolver 'http'.
+2.8.2019 17:45:11 INFO  Found metric resolver 'port'.
+2.8.2019 17:45:11 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:45:11 INFO  Calculating availability ...
+2.8.2019 17:45:11 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:45:11 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:45:11 INFO  Startup successful
+2.8.2019 17:45:11 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:45:11 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:45:11 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:45:12 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:45:12 ERROR Stopping application
+2.8.2019 17:45:44 INFO  Starting Application ...
+2.8.2019 17:45:44 INFO  Using database driver 'pgsql'.
+2.8.2019 17:45:44 INFO  Found metric resolver 'http'.
+2.8.2019 17:45:44 INFO  Found metric resolver 'port'.
+2.8.2019 17:45:44 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:45:44 INFO  Calculating availability ...
+2.8.2019 17:45:44 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:45:45 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:45:45 INFO  Startup successful
+2.8.2019 17:45:45 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:45:45 DEBUG DB >> QUERY >> SELECT * FROM metrics WHERE service_id = 1 AND date >= '2019-08-02 00:00:00' and date <= '2019-08-02 23:59:59'
+2.8.2019 17:45:45 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:45:45 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:45:45 ERROR Stopping application
+2.8.2019 17:47:26 INFO  Starting Application ...
+2.8.2019 17:47:26 INFO  Using database driver 'pgsql'.
+2.8.2019 17:47:26 INFO  Found metric resolver 'http'.
+2.8.2019 17:47:26 INFO  Found metric resolver 'port'.
+2.8.2019 17:47:26 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:47:26 INFO  Calculating availability ...
+2.8.2019 17:47:26 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:47:26 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:47:26 INFO  Startup successful
+2.8.2019 17:47:26 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:47:26 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:47:26 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:47:26 YEAH  (Availability) Service Test Service is most of the time (99.79%) available!
+2.8.2019 17:47:26 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:47:27 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:47:27 ERROR Stopping application
+2.8.2019 17:47:46 INFO  Starting Application ...
+2.8.2019 17:47:46 INFO  Using database driver 'pgsql'.
+2.8.2019 17:47:46 INFO  Found metric resolver 'http'.
+2.8.2019 17:47:46 INFO  Found metric resolver 'port'.
+2.8.2019 17:47:46 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:47:46 INFO  Calculating availability ...
+2.8.2019 17:47:46 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:47:46 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:47:46 INFO  Startup successful
+2.8.2019 17:47:46 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:47:46 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:47:46 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:47:46 YEAH  (Availability) Service Test Service is most of the time (99.76%) available!
+2.8.2019 17:47:46 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:47:46 DEBUG DB::PGSQL => INSERT INTO metricdb.availability (service_id, availability) VALUES($1, $2)
+2.8.2019 17:47:47 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:48:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:48:00 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 80,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:48:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:48:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:48:30 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 230,
+    resolver: 'http',
+    status: 'DEGRADED_PERFORMANCE',
+    maintenance: 0
+  }
+]
+2.8.2019 17:48:30 INFO  (ServiceStatus) Setting status of Test Service to OPERATIONAL
+2.8.2019 17:48:30 DEBUG DB::PGSQL => UPDATE metricdb.services SET status = $1 WHERE id = $2
+2.8.2019 17:48:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:49:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:49:00 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 230,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:49:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:49:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:49:30 INFO  [
+  {
+    id: 1,
+    name: 'Test Service',
+    url: 'https://google.com',
+    threshold: 230,
+    resolver: 'http',
+    status: 'OPERATIONAL',
+    maintenance: 0
+  }
+]
+2.8.2019 17:49:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:49:37 ERROR Stopping application
+2.8.2019 17:49:38 INFO  Starting Application ...
+2.8.2019 17:49:38 INFO  Using database driver 'pgsql'.
+2.8.2019 17:49:38 INFO  Found metric resolver 'http'.
+2.8.2019 17:49:38 INFO  Found metric resolver 'port'.
+2.8.2019 17:49:38 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:49:38 INFO  Calculating availability ...
+2.8.2019 17:49:38 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:49:38 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:49:38 INFO  Startup successful
+2.8.2019 17:49:38 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:49:38 INFO  (Availability) Check runs next at 2019-08-02T15:50:00Z
+2.8.2019 17:49:38 YEAH  (Availability) Service Test Service is most of the time (99.69%) available!
+2.8.2019 17:49:38 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:49:38 DEBUG DB::PGSQL => INSERT INTO metricdb.availability (service_id, availability) VALUES($1, $2)
+2.8.2019 17:49:38 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:50:00 INFO  Calculating availability ...
+2.8.2019 17:50:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:50:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:50:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:50:00 INFO  (Availability) Check runs next at 2019-08-02T16:00:00Z
+2.8.2019 17:50:00 YEAH  (Availability) Service Test Service is most of the time (99.69%) available!
+2.8.2019 17:50:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:50:00 DEBUG DB::PGSQL => INSERT INTO metricdb.availability (service_id, availability) VALUES($1, $2)
+2.8.2019 17:50:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:50:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:50:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:50:41 ERROR Stopping application
+2.8.2019 17:50:42 INFO  Starting Application ...
+2.8.2019 17:50:42 INFO  Using database driver 'pgsql'.
+2.8.2019 17:50:42 INFO  Found metric resolver 'http'.
+2.8.2019 17:50:42 INFO  Found metric resolver 'port'.
+2.8.2019 17:50:42 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:50:42 INFO  Calculating availability ...
+2.8.2019 17:50:42 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:50:42 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:50:42 INFO  Startup successful
+2.8.2019 17:50:42 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:50:42 INFO  (Availability) Check runs next at 2019-08-02T16:00:00Z
+2.8.2019 17:50:42 YEAH  (Availability) Service Test Service is most of the time (99.69%) available!
+2.8.2019 17:50:42 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:50:42 INFO  Result {
+  command: 'SELECT',
+  rowCount: 0,
+  oid: null,
+  rows: [],
+  fields: [
+    Field {
+      name: 'id',
+      tableID: 24701,
+      columnID: 1,
+      dataTypeID: 23,
+      dataTypeSize: 4,
+      dataTypeModifier: -1,
+      format: 'text'
+    },
+    Field {
+      name: 'service_id',
+      tableID: 24701,
+      columnID: 2,
+      dataTypeID: 23,
+      dataTypeSize: 4,
+      dataTypeModifier: -1,
+      format: 'text'
+    },
+    Field {
+      name: 'date',
+      tableID: 24701,
+      columnID: 3,
+      dataTypeID: 1082,
+      dataTypeSize: 4,
+      dataTypeModifier: -1,
+      format: 'text'
+    },
+    Field {
+      name: 'availability',
+      tableID: 24701,
+      columnID: 4,
+      dataTypeID: 701,
+      dataTypeSize: 8,
+      dataTypeModifier: -1,
+      format: 'text'
+    }
+  ],
+  _parsers: [
+    [Function: parseInteger],
+    [Function: parseInteger],
+    [Function: parseDate],
+    [Function: parseFloat]
+  ],
+  _types: TypeOverrides {
+    _types: {
+      getTypeParser: [Function: getTypeParser],
+      setTypeParser: [Function: setTypeParser],
+      arrayParser: [Object]
+    },
+    text: {},
+    binary: {}
+  },
+  RowCtor: null,
+  rowAsArray: false
+}
+2.8.2019 17:50:42 DEBUG DB::PGSQL => INSERT INTO metricdb.availability (service_id, availability) VALUES($1, $2)
+2.8.2019 17:50:42 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:51:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:51:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:51:06 ERROR Stopping application
+2.8.2019 17:52:15 INFO  Starting Application ...
+2.8.2019 17:52:15 INFO  Using database driver 'pgsql'.
+2.8.2019 17:52:15 INFO  Found metric resolver 'http'.
+2.8.2019 17:52:15 INFO  Found metric resolver 'port'.
+2.8.2019 17:52:15 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:52:15 INFO  Calculating availability ...
+2.8.2019 17:52:15 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:52:15 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:52:15 INFO  Startup successful
+2.8.2019 17:52:15 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:52:15 INFO  (Availability) Check runs next at 2019-08-02T16:00:00Z
+2.8.2019 17:52:15 YEAH  (Availability) Service Test Service is most of the time (99.69%) available!
+2.8.2019 17:52:15 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:52:15 INFO  Result {
+  command: 'SELECT',
+  rowCount: 0,
+  oid: null,
+  rows: [],
+  fields: [
+    Field {
+      name: 'id',
+      tableID: 24701,
+      columnID: 1,
+      dataTypeID: 23,
+      dataTypeSize: 4,
+      dataTypeModifier: -1,
+      format: 'text'
+    },
+    Field {
+      name: 'service_id',
+      tableID: 24701,
+      columnID: 2,
+      dataTypeID: 23,
+      dataTypeSize: 4,
+      dataTypeModifier: -1,
+      format: 'text'
+    },
+    Field {
+      name: 'date',
+      tableID: 24701,
+      columnID: 3,
+      dataTypeID: 1082,
+      dataTypeSize: 4,
+      dataTypeModifier: -1,
+      format: 'text'
+    },
+    Field {
+      name: 'availability',
+      tableID: 24701,
+      columnID: 4,
+      dataTypeID: 701,
+      dataTypeSize: 8,
+      dataTypeModifier: -1,
+      format: 'text'
+    }
+  ],
+  _parsers: [
+    [Function: parseInteger],
+    [Function: parseInteger],
+    [Function: parseDate],
+    [Function: parseFloat]
+  ],
+  _types: TypeOverrides {
+    _types: {
+      getTypeParser: [Function: getTypeParser],
+      setTypeParser: [Function: setTypeParser],
+      arrayParser: [Object]
+    },
+    text: {},
+    binary: {}
+  },
+  RowCtor: null,
+  rowAsArray: false
+}
+2.8.2019 17:52:15 DEBUG DB::PGSQL => INSERT INTO metricdb.availability (service_id, availability, date) VALUES($1, $2, $3)
+2.8.2019 17:52:15 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:52:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:52:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:52:42 ERROR Stopping application
+2.8.2019 17:52:43 INFO  Starting Application ...
+2.8.2019 17:52:43 INFO  Using database driver 'pgsql'.
+2.8.2019 17:52:43 INFO  Found metric resolver 'http'.
+2.8.2019 17:52:43 INFO  Found metric resolver 'port'.
+2.8.2019 17:52:43 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:52:43 INFO  Calculating availability ...
+2.8.2019 17:52:43 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:52:43 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:52:43 INFO  Startup successful
+2.8.2019 17:52:44 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:52:44 INFO  (Availability) Check runs next at 2019-08-02T16:00:00Z
+2.8.2019 17:52:44 YEAH  (Availability) Service Test Service is most of the time (99.69%) available!
+2.8.2019 17:52:44 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:52:44 DEBUG DB::PGSQL => UPDATE metricdb.availability SET availability = $2 WHERE id = $1
+2.8.2019 17:52:44 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:53:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:53:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:53:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:53:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:54:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:54:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:54:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:54:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:55:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:55:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:55:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:55:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:56:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:56:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:56:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:56:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:57:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:57:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:57:30 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:57:30 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:57:44 ERROR Stopping application
+2.8.2019 17:58:00 INFO  Starting Application ...
+2.8.2019 17:58:00 INFO  Using database driver 'pgsql'.
+2.8.2019 17:58:00 INFO  Found metric resolver 'http'.
+2.8.2019 17:58:00 INFO  Found metric resolver 'port'.
+2.8.2019 17:58:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:58:00 INFO  Calculating availability ...
+2.8.2019 17:58:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.services
+2.8.2019 17:58:00 INFO  Starting Express-Server on Port 8000
+2.8.2019 17:58:00 INFO  Startup successful
+2.8.2019 17:58:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3
+2.8.2019 17:58:00 INFO  (Availability) Check runs next at 2019-08-02T16:00:00Z
+2.8.2019 17:58:00 YEAH  (Availability) Service Test Service is most of the time (100%) available!
+2.8.2019 17:58:00 DEBUG DB::PGSQL => SELECT * FROM metricdb.availability WHERE service_id = $1 AND date = $2
+2.8.2019 17:58:00 DEBUG DB::PGSQL => INSERT INTO metricdb.availability (service_id, availability, date) VALUES($1, $2, $3)
+2.8.2019 17:58:00 DEBUG DB::PGSQL => INSERT INTO metricdb.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)
+2.8.2019 17:58:02 ERROR Stopping application

@@ -1,23 +1,23 @@
 // imports
-const chalk = require('chalk');
-const moment = require('moment');
+const chalk   = require('chalk');
+const moment  = require('moment');
 const symbols = require('log-symbols');
-const util = require("util");
-const fs = require('fs');
+const util    = require("util");
+const fs      = require('fs');
 
 moment.locale(process.env.LOCALE || 'de-at');
 
-let debugEnabled = process.env.ENABLE_DEBUG || false;
+let debugEnabled = process.env.ENABLE_DEBUG || true;
 
 // module
 module.exports = {
 
     LEVEL: {
-        INFO: {symbol: symbols.info, text: "INFO ", color: chalk.blue},
+        INFO   : {symbol: symbols.info, text: "INFO ", color: chalk.blue},
         SUCCESS: {symbol: symbols.success, text: "YEAH ", color: chalk.green},
         WARNING: {symbol: symbols.warning, text: "WARN ", color: chalk.keyword('orange')},
-        ERROR: {symbol: symbols.error, text: "ERROR", color: chalk.red},
-        DEBUG: {symbol: symbols.info, text: "DEBUG", color: chalk.yellowBright},
+        ERROR  : {symbol: symbols.error, text: "ERROR", color: chalk.red},
+        DEBUG  : {symbol: symbols.info, text: "DEBUG", color: chalk.yellowBright},
     },
 
     log(level, data) {

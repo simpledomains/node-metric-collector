@@ -3,90 +3,74 @@ const mysql       = require('mysql-promise')('db');
 const mysqlDriver = require('mysql');
 const log         = require('./logging');
 const moment      = require('moment');
+const requireDir  = require('require-dir');
+const drivers     = requireDir('./persistence');
+const driver      = process.env.DATABASE_DRIVER || 'pgsql';
 
+if (drivers[driver] === undefined) {
+    log.error("Driver for database %s not found!", driver);
+    process.exit(137);
+}
 
 // logic
 module.exports = {
-    init() {
-        mysql.configure({
-            host    : process.env.DATABASE_HOST,
-            user    : process.env.DATABASE_USER,
-            password: process.env.DATABASE_PASS,
-            database: process.env.DATABASE_NAME,
-            timezone: 'UTC',
-        });
 
-        log.info("Using Database %s", process.env.DATABASE_HOST);
+    service: null,
+
+    init() {
+        log.info("Using database driver '%s'.", driver);
+
+        this.service = drivers[driver];
+
+        this.service.connect();
     },
 
     async getServices() {
-        let data = await this.doQuery('SELECT * FROM services');
-
-        return data[0];
+        return await this.service.getServices();
     },
 
     async getService(id) {
-        let data = await this.doQuery('SELECT * FROM services WHERE id = ?', [id]);
-
-        return data[0].length === 1 ? data[0][0] : null;
+        return await this.service.getService(id);
     },
 
     async updateServiceStatus(item, newStatus) {
         if (item.status !== newStatus) {
             log.info("(ServiceStatus) Setting status of %s to %s", item.name, newStatus);
-            await this.doQuery('UPDATE services SET status = ? WHERE id = ?', [newStatus, item.id]);
+            await this.service.updateServiceStatus(item, newStatus);
         }
     },
 
     async persistMetric(item, responseTime, responseStatus, errorCode) {
-        return this.doQuery('INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(?, ?, ?, ?)', [item.id, responseTime, responseStatus, errorCode]);
+        return await this.service.persistMetric(item, responseTime, responseStatus, errorCode);
     },
 
     async getMetricsFor(item, begin, end) {
-        let data = await this.doQuery('SELECT * FROM metrics WHERE service_id = ? AND date >= ? and date <= ?', [item.id, begin, end]);
-
-        return data[0];
+        return await this.service.getMetricsFor(item, begin, end);
     },
 
     async getAvailabilityFor(item, date) {
         if (date === undefined) date = moment().format("YYYY-MM-DD");
 
-        let data = await this.doQuery('SELECT * FROM availability WHERE service_id = ? AND date = ?', [
-            item.id, date
-        ]);
-
-        return data[0].length === 1 ? data[0][0] : null;
+        return await this.service.getAvailabilityForAndFrom(item, date);
     },
 
     async getAllAvailabilitiesFor(item, date) {
         if (date === undefined) date = moment().subtract(90, 'days').format("YYYY-MM-DD");
 
-        let data = await this.doQuery('SELECT * FROM availability WHERE service_id = ? AND date > ? ORDER BY date DESC', [
-            item.id, date
-        ]);
-
-        return data[0];
+        return await this.service.getAvailabilityForAndFromIsHigherThan(item, date);
     },
 
     async setAvailabilityFor(item, date, value) {
-        let data = await mysql.query('SELECT * FROM availability WHERE service_id = ? AND date = ?', [
-            item.id, moment().format('YYYY-MM-DD')
-        ]);
+        let data = await this.getAvailabilityFor(item, date);
 
-        if (data[0].length === 1) {
-            this.doQuery('UPDATE availability SET availability = ? WHERE id = ?', [value, data[0][0].id]).catch(err => {
+        if (data !== undefined) {
+            this.service.updateAvailability(data.id, value).catch(err => {
                 log.error("Update for availability failed due to %s", err);
-            })
+            });
         } else {
-            this.doQuery('INSERT INTO availability (service_id, date, availability) VALUES(?, ?, ?)', [item.id, date, value]).catch(err => {
+            this.service.persistAvailability(item, value, date).catch(err => {
                 log.error("Insertion for availability failed due to %s", err);
-            })
+            });
         }
-    },
-
-    doQuery(sql, arr) {
-        log.debug("DB >> QUERY >> %s", mysqlDriver.format(sql, arr));
-
-        return mysql.query(sql, arr);
     },
 };
