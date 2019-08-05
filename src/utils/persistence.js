@@ -45,6 +45,9 @@ module.exports = {
     },
 
     async getMetricsFor(item, begin, end) {
+        if (end === undefined) end = moment().format("YYYY-MM-DD LTS");
+        if (begin === undefined) begin = moment().subtract('4', 'hours').format('YYYY-MM-DD LTS');
+
         return await this.service.getMetricsFor(item, begin, end);
     },
 

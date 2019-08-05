@@ -60,3 +60,20 @@ app.route('/service/:id')
             }
         })
     });
+
+app.route('/service/:id/metrics')
+    .get((req, res) => {
+        persistence.getService(req.params.id).then(async (data) => {
+            if (data != null) {
+
+                persistence.getMetricsFor(data).then(r => {
+                    res.json({
+                        service: data,
+                        metrics: r
+                    })
+                });
+            } else {
+                res.status(404);
+            }
+        })
+    });

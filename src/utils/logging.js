@@ -7,7 +7,7 @@ const fs      = require('fs');
 
 moment.locale(process.env.LOCALE || 'de-at');
 
-let debugEnabled = process.env.ENABLE_DEBUG || true;
+let debugEnabled = (process.env.ENABLE_DEBUG === 'true');
 
 // module
 module.exports = {

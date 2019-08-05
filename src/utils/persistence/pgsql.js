@@ -65,7 +65,7 @@ module.exports = {
             item.id, date
         ]);
 
-        return result.rows[0];
+        return result.rows;
     },
 
     async updateAvailability(identifier, value) {

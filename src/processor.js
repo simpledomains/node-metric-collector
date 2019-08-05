@@ -13,27 +13,41 @@ String.prototype.replaceAll = function (search, replacement) {
 };
 
 class Processor {
+
     initialize() {
         persistence.init();
 
         this.resolvers = requireDir('./metric');
 
+        log.info("Running with a interval of %d", this.metricInterval());
+
         for (const item of Object.keys(this.resolvers)) {
             log.info("Found metric resolver '%s'.", item);
         }
 
-        this.processor = new CronJob('*/30 * * * * *', () => {
-            this.processMetric(this.getResolvers()).catch(e => {
-                log.error("Something went wrong while processing main loop due to: %s", e.toString());
-            });
-        }, null, true, 'UTC', null, true);
-
+        if (!(process.env.DISABLE_METRIC_COLLECTOR === 'true')) {
+            this.processor = new CronJob('*/' + this.metricInterval() + ' * * * * *', () => {
+                this.processMetric(this.getResolvers()).catch(e => {
+                    log.error("Something went wrong while processing main loop due to: %s", e.toString());
+                });
+            }, null, true, 'UTC', null, false);
+        } else {
+            log.warn("Metric Collector is disabled, read only metrics.")
+        }
 
         this.availabilityCron = new CronJob('*/10 * * * *', () => {
             this.availabilityCheck().catch(e => {
                 log.error("Something went wrong while processing availability loop due to: %s", e.toString());
             });
         }, null, true, 'UTC', null, true);
+    }
+
+    metricInterval() {
+        let int = (process.env.REFRESH_INTERVAL || 30) * 1
+        if (int > 60) int = 60;
+        if (int < 1) int = 1;
+
+        return int;
     }
 
     async retrieveMetric(resolvers, item, cTry) {
@@ -113,9 +127,10 @@ class Processor {
                     }
                 });
 
-                let success = 2880 - error;
+                let daySeconds = ((60 * 60 * 24) / this.metricInterval());
+                let success    = daySeconds - error;
 
-                let availability = success / 2880 * 100;
+                let availability = success / daySeconds * 100;
 
                 if (availability >= 99) {
                     log.success("(Availability) Service %s is most of the time (%d%) available!", item.name, availability.toFixed(2));

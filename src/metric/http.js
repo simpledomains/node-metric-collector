@@ -24,12 +24,11 @@ module.exports = {
             if (e.response) {
                 return {
                     metric: e.response.elapsedTime,
-                    error : e.toString().substr(0, 20),
+                    error : 'HTTP ERROR ' + e.response.statusCode,
                     status: e.response.statusCode
                 };
             } else {
-
-                log.error("(MetricProcessor::HTTP) Failed for item %s due to %s", item.name);
+                log.error("(MetricProcessor::HTTP) Failed for item %s due to %s", item.name, e.toString());
                 return {metric: null, error: e.toString().substr(0, 20), status: null};
             }
         }
