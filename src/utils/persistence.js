@@ -51,6 +51,13 @@ module.exports = {
         return await this.service.getMetricsFor(item, begin, end);
     },
 
+    async getErroredMetricsFor(item, begin, end) {
+        if (end === undefined) end = moment().format("YYYY-MM-DD LTS");
+        if (begin === undefined) begin = moment().subtract('3', 'days').format('YYYY-MM-DD LTS');
+
+        return await this.service.getErroredMetricsFor(item, begin, end);
+    },
+
     async getAvailabilityFor(item, date) {
         if (date === undefined) date = moment().format("YYYY-MM-DD");
 

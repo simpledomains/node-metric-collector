@@ -3,6 +3,8 @@ require('dotenv').config({path: '.env.' + (process.env.PROFILE || 'production')}
 require('dotenv').config({path: '.env.local'});
 require('dotenv').config({path: '.env'});
 
+process.env.TZ = process.env.TZ || "Europe/Berlin";
+
 // includes
 const log       = require('./utils/logging');
 const processor = require('./processor');

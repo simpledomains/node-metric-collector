@@ -2,5 +2,10 @@
   "name": "status-page-nodejs",
   "restart": "on-failure:2",
   "domain": "status-backend.r3ktm8.de",
-  "project": "status-page-backend"
+  "project": "status-page-backend",
+  "rateLimit": {
+    "period": "1s",
+    "average": 1,
+    "burst": 5
+  }
 }

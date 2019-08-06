@@ -46,6 +46,14 @@ module.exports = {
         return result.rows;
     },
 
+    async getErroredMetricsFor(item, begin, end) {
+        let result = await this.client.query(s('SELECT * FROM SCHEMA.metrics WHERE service_id = $1 AND date >= $2 AND date <= $3 AND (response_error is not null OR response_time is null)'), [
+            item.id, begin, end
+        ]);
+
+        return result.rows;
+    },
+
     async persistMetric(item, responseTime, responseStatus, errorCode) {
         return await this.client.query(s('INSERT INTO SCHEMA.metrics (service_id, response_time, response_code, response_error) VALUES($1, $2, $3, $4)'), [
             item.id, responseTime, responseStatus, errorCode

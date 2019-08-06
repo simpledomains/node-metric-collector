@@ -43,7 +43,7 @@ class Processor {
     }
 
     metricInterval() {
-        let int = (process.env.REFRESH_INTERVAL || 30) * 1
+        let int = (process.env.REFRESH_INTERVAL || 30) * 1;
         if (int > 60) int = 60;
         if (int < 1) int = 1;
 
@@ -66,14 +66,14 @@ class Processor {
             metric = {metric: null, status: null, error: 'CONFIGURATION'}
         }
 
-        if (Processor.determineNewStatus(metric) !== 'OPERATIONAL' && cTry < 3) {
+        if (this.determineNewStatus(metric) !== 'OPERATIONAL' && cTry < 3) {
             metric = await this.retrieveMetric(resolvers, item, cTry + 1);
         }
 
         return metric;
     }
 
-    static determineNewStatus(metric) {
+    determineNewStatus(metric) {
         if (metric.error === 'MAINTENANCE' || metric.error === 'DEGRADED_PERFORMANCE') {
             return metric.error;
         }
@@ -95,7 +95,7 @@ class Processor {
 
                 let metric = await this.retrieveMetric(resolvers, item, 1);
 
-                await persistence.updateServiceStatus(item, Processor.determineNewStatus(metric));
+                await persistence.updateServiceStatus(item, this.determineNewStatus(metric));
 
                 await persistence.persistMetric(item, metric.metric, metric.status, metric.error);
             }

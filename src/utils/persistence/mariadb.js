@@ -27,26 +27,32 @@ module.exports = {
     async getServices() {
         await this.waitForConnection();
 
-        return await this.client.query(s('SELECT * FROM services'));
+        return await this.query('SELECT * FROM services');
     },
 
     async getService(id) {
         await this.waitForConnection();
 
-        let result = await this.client.query(s('SELECT * FROM services WHERE id = ?'), [id]);
+        let result = await this.query('SELECT * FROM services WHERE id = ?', [id]);
         return result[0];
     },
 
     async updateServiceStatus(item, newStatus) {
         await this.waitForConnection();
 
-        return await this.client.query(s('UPDATE services SET status = ? WHERE id = ?'), [newStatus, item.id]);
+        return await this.query('UPDATE services SET status = ? WHERE id = ?', [newStatus, item.id]);
     },
 
     async getMetricsFor(item, begin, end) {
         await this.waitForConnection();
 
-        return await this.client.query(s('SELECT * FROM metrics WHERE service_id = ? AND date >= ? AND date <= ?'), [
+        return await this.query('SELECT * FROM metrics WHERE service_id = ? AND date >= ? AND date <= ? ORDER BY date ASC', [
+            item.id, begin, end
+        ]);
+    },
+
+    async getErroredMetricsFor(item, begin, end) {
+        return await this.query('SELECT * FROM metrics WHERE service_id = ? AND date >= ? AND date <= ? AND (response_error is not null OR response_time is null) ORDER BY date DESC', [
             item.id, begin, end
         ]);
     },
@@ -54,7 +60,7 @@ module.exports = {
     async persistMetric(item, responseTime, responseStatus, errorCode) {
         await this.waitForConnection();
 
-        return await this.client.query(s('INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(?, ?, ?, ?)'), [
+        return await this.query('INSERT INTO metrics (service_id, response_time, response_code, response_error) VALUES(?, ?, ?, ?)', [
             item.id, responseTime, responseStatus, errorCode
         ]);
     },
@@ -64,7 +70,7 @@ module.exports = {
 
         if (item.id === undefined) return null;
 
-        let result = await this.client.query(s('SELECT * FROM availability WHERE service_id = ? AND date = ?'), [
+        let result = await this.query('SELECT * FROM availability WHERE service_id = ? AND date = ?', [
             item.id, date
         ]);
 
@@ -74,7 +80,7 @@ module.exports = {
     async getAvailabilityForAndFromIsHigherThan(item, date) {
         await this.waitForConnection();
 
-        return await this.client.query(s('SELECT * FROM availability WHERE service_id = ? AND date >= ? ORDER BY date DESC'), [
+        return await this.query('SELECT * FROM availability WHERE service_id = ? AND date >= ? ORDER BY date DESC', [
             item.id, date
         ]);
     },
@@ -82,7 +88,7 @@ module.exports = {
     async updateAvailability(identifier, value) {
         await this.waitForConnection();
 
-        return await this.client.query(s('UPDATE availability SET availability = ? WHERE id = ?'), [
+        return await this.query('UPDATE availability SET availability = ? WHERE id = ?', [
             value, identifier
         ]);
     },
@@ -90,7 +96,7 @@ module.exports = {
     async persistAvailability(item, value, date) {
         await this.waitForConnection();
 
-        return await this.client.query(s('INSERT INTO availability (service_id, availability, date) VALUES(?, ?, ?))'), [
+        return await this.query('INSERT INTO availability (service_id, availability, date) VALUES(?, ?, ?)', [
             item.id, value, date
         ]);
     },
@@ -101,5 +107,10 @@ module.exports = {
                 setTimeout(resolve, 1000);
             });
         }
+    },
+
+    async query(str, params) {
+        log.debug("DB::MARIADB => %s %s", str, params);
+        return await this.client.query(str, params);
     }
 };

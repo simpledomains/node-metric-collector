@@ -3,6 +3,7 @@ const express     = require('express');
 const log         = require('./utils/logging');
 const cors        = require('cors');
 const persistence = require('./utils/persistence');
+const proc        = require("./processor");
 
 // logic
 const app  = express();
@@ -67,10 +68,51 @@ app.route('/service/:id/metrics')
             if (data != null) {
 
                 persistence.getMetricsFor(data).then(r => {
+
+                    let enrichedData = r.map(i => {
+                        i.error  = i.response_error;
+                        i.metric = i.response_time;
+                        i.status = proc.determineNewStatus(i);
+                        i.error  = undefined;
+                        i.metric = undefined;
+
+                        return i;
+                    });
+
                     res.json({
                         service: data,
-                        metrics: r
+                        metrics: enrichedData
                     })
+                });
+            } else {
+                res.status(404);
+            }
+        })
+    });
+
+app.route('/service/:id/incidents')
+    .get((req, res) => {
+        persistence.getService(req.params.id).then(async (data) => {
+            if (data != null) {
+
+                persistence.getErroredMetricsFor(data).then(r => {
+
+                    let enrichedData = r.map(i => {
+                        i.error  = i.response_error;
+                        i.metric = i.response_time;
+                        i.status = proc.determineNewStatus(i);
+                        i.error  = undefined;
+                        i.metric = undefined;
+                        return i;
+                    });
+
+                    res.json({
+                        service  : data,
+                        incidents: enrichedData
+                    })
+                }).catch(e => {
+                    res.json({error: e, message: e.toString()});
+                    res.status(500);
                 });
             } else {
                 res.status(404);
